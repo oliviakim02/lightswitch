@@ -1,6 +1,5 @@
 <body>
 
-  <img id="dream" src="dream.webp" alt="dreamscape">
 
   <div class="lightswitch">
     <div class="switch">
@@ -12,6 +11,7 @@
   <div class="header">welcome to dreamland (.◜◡◝) go to sleep...</div>
   <div class="instructions">lights on: up arrow<br>lights off: down arrow</div>
   <div class="sleeptext">WAKE UP!!!</div>
+  <div class="nobackground"></div>
 
 </body>
 
@@ -64,7 +64,7 @@
     font-size: 30px;
     font-weight: bold;
     color: white;
-    position: absolute;
+    position: relaitve;
     top: 75px;
     left: 50px;
   }
@@ -83,46 +83,51 @@
     position: relative;
     top: 230px;
     color: white;
+    visibility: hidden;
   }
   
-  #dream {
-    height: 100vh;
-  }
-  
+  html { 
+  background: url(https://media.glamourmagazine.co.uk/photos/6374af90b43a95f7c7048063/16:9/w_1280,c_limit/RECURRING%20DREAMS%20161122%20GettyImages-1409724406_SF.jpeg) no-repeat center center fixed; 
+  background-size: cover;
+}
+
 </style>
 
 
 
 <script>
-  function showImage() {
-    const img = document.getElementById('dream');
-    img.style.visibility = 'visible';
-    img.style.height = window.innerHeight;
-  }
 
-  function hideImage() {
-    const img = document.getElementById('dream');
-    img.style.visibility = 'hidden';
-  }
 
-  function lightsOn(event) {
-    if (event.key === 'ArrowUp') {
-      document.body.style.background = 'white'
-      showImage()
-    }
-  }
+//   function lightsOn(event) {
+//     if (event.key === 'ArrowUp') {
+//       showImage()
+//     }
+//   }
 
-  function lightsOff(event) {
+//   function lightsOff(event) {
+//     if (event.key === 'ArrowDown') {
+//       document.body.style.background = 'none'
+//       document.body = 'sleeptext'
+//       // document.getElementById('html').className += 'nobackground';
+//     }
+//   }
+  
+    function animate (event) {
     if (event.key === 'ArrowDown') {
       document.body.style.background = 'black'
-      document.body = 'sleeptext'
-      hideImage()
+    } else if (event.key === 'ArrowUp') {
+      document.body.style.background = 'html'
+      document.body = 'header'
+      document.body = 'lightswitch'
     }
   }
+  
+  window.addEventListener('keydown', animate)
+  
 
 
 
 
-  addEventListener('ArrowUp', lightsOn)
-  addEventListener('ArrowDown', lightsOff)
+  // addEventListener('keyup', lightsOn)
+  // addEventListener('keydown', lightsOff)
 </script>
