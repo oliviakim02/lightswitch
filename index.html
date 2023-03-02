@@ -83,51 +83,27 @@
     position: relative;
     top: 230px;
     color: white;
-    visibility: hidden;
   }
-  
-  html { 
-  background: url(https://media.glamourmagazine.co.uk/photos/6374af90b43a95f7c7048063/16:9/w_1280,c_limit/RECURRING%20DREAMS%20161122%20GettyImages-1409724406_SF.jpeg) no-repeat center center fixed; 
-  background-size: cover;
-}
 
+  html {
+    background: url(https://media.glamourmagazine.co.uk/photos/6374af90b43a95f7c7048063/16:9/w_1280,c_limit/RECURRING%20DREAMS%20161122%20GettyImages-1409724406_SF.jpeg) no-repeat center center fixed;
+    background-size: cover;
+  }
 </style>
 
 
 
 <script>
-
-
-//   function lightsOn(event) {
-//     if (event.key === 'ArrowUp') {
-//       showImage()
-//     }
-//   }
-
-//   function lightsOff(event) {
-//     if (event.key === 'ArrowDown') {
-//       document.body.style.background = 'none'
-//       document.body = 'sleeptext'
-//       // document.getElementById('html').className += 'nobackground';
-//     }
-//   }
-  
-    function animate (event) {
+  function animate(event) {
     if (event.key === 'ArrowDown') {
       document.body.style.background = 'black'
+      document.getElementsByClassName('header').style.visibility = 'hidden';
+      document.getElementsByClassName('lightswitch').style.visibility = 'hidden';
     } else if (event.key === 'ArrowUp') {
-      document.body.style.background = 'html'
-      document.body = 'header'
-      document.body = 'lightswitch'
+      document.getElementsByClassName('header').style.visibility = 'visible'
+      document.getElementsByClassName('lightswitch').style.visibility = 'visible'
     }
   }
-  
+
   window.addEventListener('keydown', animate)
-  
-
-
-
-
-  // addEventListener('keyup', lightsOn)
-  // addEventListener('keydown', lightsOff)
 </script>
