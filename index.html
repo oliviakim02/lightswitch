@@ -12,6 +12,8 @@
   <div class="instructions">lights on: up arrow<br>lights off: down arrow</div>
   <div class="sleeptext">WAKE UP!!!</div>
   <div class="nobackground"></div>
+  <div class="dreamtext">WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?</div>
+  <div class="awaketext">are you still dreaming?<br>keep scrolling...<br>what's real? what isn't?</div>
 
 </body>
 
@@ -75,14 +77,29 @@
     position: absolute;
     top: 180px;
     right: 54px;
+    color: white;
   }
 
   .sleeptext {
     font-size: 50px;
     text-align: center;
     position: relative;
-    top: 230px;
+    top: 400px;
     color: white;
+  }
+
+  .dreamtext {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+  }
+
+  .awaketext {
+    font-size: 40px;
+    color: black;
+    text-align: center;
+    position: absolute;
+    top: 10px;
   }
 
   html {
@@ -94,14 +111,37 @@
 
 
 <script>
+  const pics = ['https://cdn-prod.medicalnewstoday.com/content/images/articles/284/284378/some-themes.jpg', 'https://cdn.mos.cms.futurecdn.net/CRZ9CghnXsjFD3PkbymRtX.jpg', 'https://biaaz.org/wp-content/uploads/2021/02/DreamsFeature-1280.jpg', 'https://cdn.shopify.com/s/files/1/0304/4353/files/33011826_faceless-man-in-surreal-desert_resized_480x480.jpg?v=1625404577', 'https://lucid-dream-research.com/wp-content/uploads/2017/11/surreal-2904533__340-340x240.jpg', 'https://static.boredpanda.com/blog/wp-content/uuuploads/interesting-facts-dreams/13-Interesting-Facts-about-Dreams-cornfields.jpg', 'https://static.boredpanda.com/blog/wp-content/uuuploads/interesting-facts-dreams/13-Interesting-Facts-about-Dreams-flying.jpg']
+
+  document.querySelector('.sleeptext').style.visibility = 'hidden'
+  document.querySelector('.dreamtext').style.visibility = 'hidden'
+  document.querySelector('.awaketext').style.visibility = 'hidden'
+
+  function getRandomInteger() {
+    return Math.floor(Math.random() * (7 - 0)) + 0
+  }
+
   function animate(event) {
     if (event.key === 'ArrowDown') {
       document.body.style.background = 'black'
-      document.getElementsByClassName('header').style.visibility = 'hidden';
-      document.getElementsByClassName('lightswitch').style.visibility = 'hidden';
+      document.querySelector('.header').style.visibility = 'hidden'
+      document.querySelector('.sleeptext').style.visibility = 'visible'
+      document.querySelector('.dreamtext').style.visibility = 'visible'
+      document.querySelector('.lightswitch').style.visibility = 'hidden'
+      document.querySelector('.instructions').style.visibility = 'hidden'
+      let randomNumber = getRandomInteger(0, 7)
+      const img = document.createElement("img")
+      img.src = pics[randomNumber]
+      document.body.appendChild(img)
+      document.querySelector('.awaketext').style.visibility = 'hidden'
     } else if (event.key === 'ArrowUp') {
-      document.getElementsByClassName('header').style.visibility = 'visible'
-      document.getElementsByClassName('lightswitch').style.visibility = 'visible'
+      document.querySelector('.header').style.visibility = 'visible'
+      document.querySelector('.lightswitch').style.visibility = 'visible'
+      document.querySelector('.sleeptext').style.visibility = 'hidden'
+      document.querySelector('.dreamtext').style.visibility = 'hidden'
+      document.body.style.background = 'white'
+      document.querySelector('.awaketext').style.visibility = 'visible'
+
     }
   }
 
